@@ -2,17 +2,50 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Bag pouch = new Bag("Belt Pouch", 0.5);
+        Bag backpack = new Bag("Main Backpack", 2.0);
 
-        Item potion = new Item("Health Potion", 0.5);
-        Item gem = new Item("Magic Gem", 0.2);
+        Item bedroll = new Item("Bedroll", 4.0);
+        Item rope = new Item("Rope", 3.0);
+        Item sword = new Item("Sword", 3.5);
 
-        pouch.add(potion);
-        pouch.add(gem);
+        Bag potionPouch = new Bag("Potion Pouch", 0.5);
+        potionPouch.add(new Item("Health Potion", 0.5));
+        potionPouch.add(new Item("Mana Potion", 0.4));
 
-        pouch.displayInfo();
+        Bag holdingBag = new Bag("Bag of Holding", 1.0);
+        holdingBag.add(new Item("Gold Coins", 0.2));
 
-        System.out.println("Total weight: "
-                + pouch.getWeight() + " lbs");
+        Bag gemBag = new Bag("Gem Bag", 0.3);
+        gemBag.add(new Item("Ruby", 0.1));
+        gemBag.add(new Item("Emerald", 0.1));
+
+        holdingBag.add(gemBag);
+
+        backpack.add(bedroll);
+        backpack.add(rope);
+        backpack.add(sword);
+        backpack.add(potionPouch);
+        backpack.add(holdingBag);
+
+        System.out.println("=== Full Inventory ===");
+        backpack.displayInfo();
+
+        System.out.println("\nTotal backpack weight: "
+                + backpack.getWeight() + " lbs");
+
+        System.out.println("\n=== Potion Pouch Only ===");
+        potionPouch.displayInfo();
+
+        System.out.println("Potion pouch total weight: "
+                + potionPouch.getWeight() + " lbs");
+
+        System.out.println("\n=== Testing Unsupported Operation ===");
+
+        try {
+            sword.add(new Item("Extra Item", 1.0));
+        } catch (UnsupportedOperationException e) {
+            System.out.println(
+                    "Warning: An individual item cannot contain other items.");
+        }
     }
 }
