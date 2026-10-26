@@ -47,5 +47,28 @@ public class Main {
             System.out.println(
                     "Warning: An individual item cannot contain other items.");
         }
-    }
+    
+    System.out.println("\n=== Testing Empty Bag ===");
+
+        Bag emptyBag = new Bag("Empty Bag", 0.5);
+        emptyBag.displayInfo();
+
+        System.out.println("Empty bag weight: "
+                + emptyBag.getWeight() + " lbs");
+
+        System.out.println("\n=== Testing Remove Item ===");
+
+        Bag testBag = new Bag("Test Bag", 1.0);
+        Item testPotion = new Item("Potion", 0.5);
+
+        testBag.add(testPotion);
+
+        System.out.println("Weight before removal: "
+                + testBag.getWeight() + " lbs");
+
+        testBag.remove(testPotion);
+
+        System.out.println("Weight after removal: "
+                + testBag.getWeight() + " lbs");
+}
 }
