@@ -1,2 +1,2 @@
 # Journal
-Write your Journal questions and notes here.
+I tested two items and displayed their names and weights. The default methods throw exceptions because individual item cannot hold other items
